@@ -49,33 +49,20 @@
 
 				<!-- Main -->
 					<div id="main">
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<!-- <h1>It's My Story<br />
-									My Journey</h1> -->
-									<h2>It's My Story</h2>
-									<p>I completed my bachelors in Computer Engineering at one of the prestigious institute, Dr.
-										D Y Patil's Ramrao Adik Institute of Technology, Navi Mumbai. I completed with first class with distinction</p>
-								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>
-									After completing my undergrad studies, I have been offered a full-time software engineer role at LTI. I have had an opportunity to work with India's leading Construction, Finance, and Oil & Gas personnel to design, develop new tools, and migrate the existing system. My key contribution was to develop a learning portal and design, develop and deploy a bank guarantee portal for Corporate Finance and Treasury Team. Later I had been associated with Chevron, Australia, to enhance and migrate existing SharePoint sites, improve various internal tools, and design workflows to automate business decisions. I was awarded a trophy at the annual symposium for developing a project from the scratch and delivering in stipulated timeline.
-								</p>
-								<p> 
-									After a successful venture at LTI, I joined forces with NIUM, one of the exciting and young FinTech startups. NIUM recently received a Tech Unicorn status with the Series D funding and saw its valuation rise above $1 billion. Working with the team of hundreds at LTI to an extremely smaller and efficient team at NIUM gave me a broader perspective of technology. I actually solved real-world problems. With experience over my shoulder, I was assigned an auto-reconciliation tool project. As a backend developer, I designed several microservices and scalable APIs for General Ledger Services. I have modularized and developed NPM packages for parsing SWIFT statements. I had coordinated with the VISA team to auto-reconcile the card transactions, for which I designed a completely automated, PCI-DSS compliant solution on AWS. I have also integrated payment gateways, Elasticsearch and Kibana and automate deployment with Jenkins and AWS Fargate.									
-								</p>
-								<p>
-									Learning has always been an important part of my life and every day I want to bring something new to the table. I wouldn't mind spending an extra hour to learn and develop myself. I would spend after-office hours learning cutting-edge technologies. Distributed and Decentralized Systems caught my mind. I completed a specialization course to learn Ethereum, Solidity at the University at Buffalo. To expand my horizons, I came up with a decision to study further and I started sending my applications to many grad schools. Due to my decent academic credentials and GRE, TOEFL score, I was accepted at many grad schools. Syracuse University happened to be on the top of the list because of its diverse program and intensive research in the blockchain. 
-
-								</p>
-							</section>
-
+						<section class="split contact">
+							<div class="row">
+								<div class="action stacked">
+									<div class="col-6" id="skill1"></div>
+									<div class="col-6 col-12-xsmall" >Html</div>
+									<div class="col-6" id="skill2"></div>
+								</div>
+								
+								<div class="col-4" id="skill3"></div>
+							</div>	
+						</section>
+							
+						</section>
+						
 					</div>
 
 				<!-- Footer -->
@@ -143,6 +130,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.3.1/d3.min.js"></script>
 
 	</body>
 
@@ -153,5 +141,55 @@
   gtag('js', new Date());
 
   gtag('config', 'G-77TX16VS4W');
+</script>
+<script type="text/javascript">
+const width=200,
+      height=18
+const scale =  d3.scaleLinear().domain([0,width]).range([0,width - 50])
+console.log(scale(width))
+
+const data = [
+	{ id:'skill1', skill:'Html', value:80 },
+	{ id:'skill2', skill:'Html', value:80 },
+	{ id:'skill3', skill:'Html', value:80 },
+	{ id:'skill4', skill:'Html', value:80 }
+]
+
+data.forEach(d => {
+	
+	const canvas= d3.select(`#${d.id}`)
+              .append('svg') 
+              .attr('width',width)
+              .attr('height',height)
+
+
+	const group = canvas.append('g');
+
+	group
+	.append('rect')
+	.attr("x", 0)
+	.attr("width",scale(width))
+	.attr("height", height)
+	.style('fill','#000')
+	.attr("rx", 10);
+
+	group
+	.append('rect')
+	.attr("x", 0)
+	.attr("width",scale(d.value * width /100))
+	.attr("height", height)
+	.style('fill','#ffe66d')
+	.attr("rx", 10);
+
+	group.append('text')
+	.attr('x', scale(width)+5)
+	.attr('y',height/2+3)
+	.attr('class','text')
+	.attr('alignment-baseline','middle')
+	.text(`${d.value}%`)
+	.attr('text-anchor','right')
+	.style('fill', 'black');
+})
+
 </script>
 </html>

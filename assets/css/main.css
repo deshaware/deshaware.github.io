@@ -2548,6 +2548,14 @@ input, select, textarea {
 	.formerize-placeholder {
 		color: #909498 !important;
 	}
+/* Skills */
+.skill{
+	background:gray;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+/* End-Skills */
 
 /* Icon */
 
